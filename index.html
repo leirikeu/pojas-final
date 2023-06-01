@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment</title>
+  <style>
+    body {
+      padding: 20px;
+      background: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8B00FF);
+      background-size: 1200% 100%;
+      animation: rainbow 10s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    div {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 24px;
+      margin-top: 0;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      display: block;
+      padding: 10px 20px;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      background-color: #4caf50;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      margin-top: 10px;
+      text-align: center;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Sum of Numbers in Range</h1>
+
+    <input type="number" id="startInput" placeholder="Enter the starting number">
+    <input type="number" id="endInput" placeholder="Enter the ending number">
+
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <button onclick="reset()">Reset</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateSum() {
+      var startInput = document.getElementById('startInput');
+      var endInput = document.getElementById('endInput');
+      var result = document.getElementById('result');
+      var startingNumber = parseInt(startInput.value);
+      var endingNumber = parseInt(endInput.value);
+      var sum = 0;
+      var numbersAdded = "";
+
+      if (startingNumber && endingNumber && startingNumber <= endingNumber) {
+        for (var i = startingNumber; i <= endingNumber; i++) {
+          sum += i;
+          numbersAdded += i + ", ";
+        }
+
+       
+        numbersAdded = numbersAdded.slice(0, -2);
+
+        result.textContent = "Numbers added: " + numbersAdded + "\n";
+        result.textContent += "The sum of all numbers in the range is: " + sum;
+      } else {
+        result.textContent = "Invalid input! Please enter valid numbers.";
+      }
+    }
+
+    function reset() {
+      var startInput = document.getElementById('startInput');
+      var endInput = document.getElementById('endInput');
+      var result = document.getElementById('result');
+      startInput.value = "";
+      endInput.value = "";
+      result.textContent = "";
+    }
+  </script>
+</body>
+</html>
